@@ -1,0 +1,85 @@
+set.seed(18)
+spam <- read.csv("spam.csv")
+str(spam)
+class(spam)
+
+#split train and test set 
+
+
+spam_idx = sample(1:nrow(spam), nrow(spam) / 2) 
+spam_train = spam[spam_idx,]
+spam_test  = spam[-spam_idx,]
+
+
+
+spam$spam<-as.factor(spam$spam)
+
+
+
+
+#Logistic regression
+logisticModelSpam<- glm(spam~.,family ='binomial',data=spam_train )
+predictionLogisticSpam<-predict(logisticModelSpam,spam_test,type='response')
+pred_0_1<-ifelse(predictionLogisticSpam>=0.5,1,0)
+accLogistic<-mean(spam_test$spam==pred_0_1)
+
+
+
+
+require(rpart)
+#classification tree
+spamtree<-rpart(spam~.,data=spam_train,method='anova')
+
+plot(spamtree)
+text(spamtree,pretty=0)
+title(main='Regression Tree Spam')
+
+predictSpamTree<-predict(spamtree,newdata = spam_test)
+predictTree0_1<-ifelse(predictSpamTree>=0.5,1,0)
+accClassfication<-mean(spam_test$spam==predictTree0_1)
+
+#Bagging 
+require(randomForest)
+spamRf=randomForest(spam~.,data=spam_train,mtry=dim(spam_train)[2]-1)
+predictspamRf=predict(spamRf,spam_test)
+#We should have TRUE or FALSE in this model but we have double
+#So we shouldn't use "ifelse" but the result is not good 
+predictspamRf0_1<-ifelse(predictspamRf>=0.5,1,0)
+accuBagging<-mean(spam_test$spam==predictspamRf0_1)
+#accuBagging<-mean(spam_test$spam==predictspamRf)
+accuBagging
+
+
+#RANDOM FORESTS
+
+spamRfRF=randomForest(spam~.,data=spam_train,mtry=(dim(spam_train)[2]-1)/3)
+predictspamRfRF=predict(spamRfRF,spam_test)
+predictSpamRfRf0_1<-ifelse(predictspamRfRF>=0.5,1,0)
+accRandomForest<-mean(spam_test$spam==predictSpamRfRf0_1)
+
+
+#BOOSTING
+
+require(gbm)
+spam_boost = gbm(spam ~ ., data = spam_train, distribution = "gaussian", 
+                   n.trees = 5000, interaction.depth = 4, shrinkage = 0.01)
+predictSpamBoost<-predict(spam_boost,spam_test)
+#Hesitation between distribution gaussian or bernouilli
+predictSpamBoost0_1<-ifelse(predictSpamBoost>=0.5,1,0)
+accuracyBoosting<-mean(spam_test$spam==predictSpamBoost0_1)
+#THe boost model is even more a better model than bagging as we can see thanks to RMSE
+
+
+
+#presentation of results
+nom<-c("Logistic Reg","classificationTree","Bagging","Random Forest","Boosting")
+acc<-c(accLogistic,accClassfication,accuBagging,accRandomForest,accuracyBoosting)
+
+dfAcc<-data.frame(nom,acc)
+dfAcc
+
+
+
+
+
+
