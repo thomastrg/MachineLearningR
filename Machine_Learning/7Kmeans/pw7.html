@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Trang Thomas" />
+
+
+<title>pw7</title>
+
+<script src="pw7_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="pw7_files/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="pw7_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="pw7_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="pw7_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="pw7_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="pw7_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="pw7_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="pw7_files/navigation-1.1/tabsets.js"></script>
+<link href="pw7_files/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="pw7_files/pagedtable-1.1/js/pagedtable.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      a.sourceLine { display: inline-block; line-height: 1.25; }
+  a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+  a.sourceLine:empty { height: 1.2em; }
+  .sourceCode { overflow: visible; }
+  code.sourceCode { white-space: pre; position: relative; }
+  div.sourceCode { margin: 1em 0; }
+  pre.sourceCode { margin: 0; }
+  @media screen {
+  div.sourceCode { overflow: auto; }
+  }
+  @media print {
+  code.sourceCode { white-space: pre-wrap; }
+  a.sourceLine { text-indent: -1em; padding-left: 1em; }
+  }
+  pre.numberSource a.sourceLine
+    { position: relative; left: -4em; }
+  pre.numberSource a.sourceLine::before
+    { content: attr(title);
+      position: relative; left: -1em; text-align: right; vertical-align: baseline;
+      border: none; pointer-events: all; display: inline-block;
+      -webkit-touch-callout: none; -webkit-user-select: none;
+      -khtml-user-select: none; -moz-user-select: none;
+      -ms-user-select: none; user-select: none;
+      padding: 0 4px; width: 4em;
+    }
+  pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+  div.sourceCode
+    { color: #cccccc; background-color: #303030; }
+  @media screen {
+  a.sourceLine::before { text-decoration: underline; }
+  }
+  code span.al { color: #ffcfaf; } /* Alert */
+  code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+  code span.at { } /* Attribute */
+  code span.bn { color: #dca3a3; } /* BaseN */
+  code span.bu { } /* BuiltIn */
+  code span.cf { color: #f0dfaf; } /* ControlFlow */
+  code span.ch { color: #dca3a3; } /* Char */
+  code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+  code span.co { color: #7f9f7f; } /* Comment */
+  code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+  code span.do { color: #7f9f7f; } /* Documentation */
+  code span.dt { color: #dfdfbf; } /* DataType */
+  code span.dv { color: #dcdccc; } /* DecVal */
+  code span.er { color: #c3bf9f; } /* Error */
+  code span.ex { } /* Extension */
+  code span.fl { color: #c0bed1; } /* Float */
+  code span.fu { color: #efef8f; } /* Function */
+  code span.im { } /* Import */
+  code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+  code span.kw { color: #f0dfaf; } /* Keyword */
+  code span.op { color: #f0efd0; } /* Operator */
+  code span.ot { color: #efef8f; } /* Other */
+  code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+  code span.sc { color: #dca3a3; } /* SpecialChar */
+  code span.ss { color: #cc9393; } /* SpecialString */
+  code span.st { color: #cc9393; } /* String */
+  code span.va { } /* Variable */
+  code span.vs { color: #cc9393; } /* VerbatimString */
+  code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+    </style>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  { color: #cccccc; background-color: #303030; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ffcfaf; } /* Alert */
+code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #dca3a3; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #f0dfaf; } /* ControlFlow */
+code span.ch { color: #dca3a3; } /* Char */
+code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code span.co { color: #7f9f7f; } /* Comment */
+code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code span.do { color: #7f9f7f; } /* Documentation */
+code span.dt { color: #dfdfbf; } /* DataType */
+code span.dv { color: #dcdccc; } /* DecVal */
+code span.er { color: #c3bf9f; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #c0bed1; } /* Float */
+code span.fu { color: #efef8f; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+code span.kw { color: #f0dfaf; } /* Keyword */
+code span.op { color: #f0efd0; } /* Operator */
+code span.ot { color: #efef8f; } /* Other */
+code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code span.sc { color: #dca3a3; } /* SpecialChar */
+code span.ss { color: #cc9393; } /* SpecialString */
+code span.st { color: #cc9393; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #cc9393; } /* VerbatimString */
+code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">pw7</h1>
+<h3 class="subtitle">K means</h3>
+<h4 class="author">Trang Thomas</h4>
+<h4 class="date">2020-11-27 18:00:22</h4>
+
+</div>
+
+
+<div id="k-means-clustering" class="section level1">
+<h1>K-means clustering</h1>
+</div>
+<div id="section" class="section level1">
+<h1>1)</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">ligue1 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;ligue1_17_18.csv&quot;</span>, <span class="dt">row.names=</span><span class="dv">1</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)</a></code></pre></div>
+</div>
+<div id="section-1" class="section level1">
+<h1>2)</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">require</span>(knitr)</a></code></pre></div>
+<pre><code>## Loading required package: knitr</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">kable</span>(ligue1[<span class="dv">0</span><span class="op">:</span><span class="dv">2</span>,])</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Points</th>
+<th align="right">Wins</th>
+<th align="right">Draws</th>
+<th align="right">Loses</th>
+<th align="right">Goals.scored</th>
+<th align="right">Goals.conceded</th>
+<th align="right">Difference.goals</th>
+<th align="right">Points.per.game</th>
+<th align="right">red.cards</th>
+<th align="right">yellow.cards</th>
+<th align="right">clean.sheets.percentage</th>
+<th align="right">failed.to.score.percentage</th>
+<th align="right">shots.per.match.average</th>
+<th align="right">shots.on.goal.per.match.average</th>
+<th align="right">ball.possession.per.game.average</th>
+<th align="right">sum.offside.in.attack</th>
+<th align="right">sum.offside.in.defense</th>
+<th align="right">corners.per.game.average</th>
+<th align="right">fouls.for.sum</th>
+<th align="right">fouls.against.sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Paris-SG</td>
+<td align="right">93</td>
+<td align="right">29</td>
+<td align="right">6</td>
+<td align="right">3</td>
+<td align="right">108</td>
+<td align="right">29</td>
+<td align="right">79</td>
+<td align="right">2.45</td>
+<td align="right">6</td>
+<td align="right">66</td>
+<td align="right">47</td>
+<td align="right">8</td>
+<td align="right">16.05</td>
+<td align="right">6.74</td>
+<td align="right">63.34</td>
+<td align="right">98</td>
+<td align="right">99</td>
+<td align="right">6.71</td>
+<td align="right">139</td>
+<td align="right">105</td>
+</tr>
+<tr class="even">
+<td>Monaco</td>
+<td align="right">80</td>
+<td align="right">24</td>
+<td align="right">8</td>
+<td align="right">6</td>
+<td align="right">85</td>
+<td align="right">45</td>
+<td align="right">40</td>
+<td align="right">2.11</td>
+<td align="right">3</td>
+<td align="right">70</td>
+<td align="right">37</td>
+<td align="right">11</td>
+<td align="right">15.68</td>
+<td align="right">3.18</td>
+<td align="right">57.68</td>
+<td align="right">93</td>
+<td align="right">90</td>
+<td align="right">6.39</td>
+<td align="right">115</td>
+<td align="right">112</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">dim</span>(ligue1)[<span class="dv">2</span>]</a></code></pre></div>
+<pre><code>## [1] 20</code></pre>
+<p>There are 20 features in this Dataset which are represented by the number of columns</p>
+</div>
+<div id="pointcards" class="section level1">
+<h1>PointCards</h1>
+</div>
+<div id="section-2" class="section level1">
+<h1>3)</h1>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">pointCards=<span class="kw">data.frame</span>(ligue1<span class="op">$</span>Points,ligue1<span class="op">$</span>yellow.cards)</a></code></pre></div>
+</div>
+<div id="section-3" class="section level1">
+<h1>4)</h1>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb8-2" title="2"></a>
+<a class="sourceLine" id="cb8-3" title="3">km &lt;-<span class="st"> </span><span class="kw">kmeans</span>(pointCards,<span class="dt">centers=</span><span class="dv">2</span>,<span class="dt">iter.max =</span> <span class="dv">20</span>)</a></code></pre></div>
+</div>
+<div id="section-4" class="section level1">
+<h1>5)</h1>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">km</a></code></pre></div>
+<pre><code>## K-means clustering with 2 clusters of sizes 16, 4
+## 
+## Cluster means:
+##   ligue1.Points ligue1.yellow.cards
+## 1         44.75             71.5625
+## 2         82.00             71.2500
+## 
+## Clustering vector:
+##  [1] 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## 
+## Within cluster sum of squares by cluster:
+## [1] 2180.938  256.750
+##  (between_SS / total_SS =  64.6 %)
+## 
+## Available components:
+## 
+## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;     &quot;tot.withinss&quot;
+## [6] &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;         &quot;ifault&quot;</code></pre>
+<p>cluster represents a vector with all rows of the df and to which cluster each of point is allocated<br />
+centers is a matrix of the coordinates of each cluster’s center<br />
+withinss is for a cluster, the sum of squares from the cluster centroid to each observation<br />
+tot.withinss is the sum of the withinss of each cluster<br />
+totss is the total sum of square<br />
+betweenss is the total sum of square minus the tot.withinss<br />
+size is the number of observations for each cluster<br />
+iter is the number of outer iterations<br />
+ifault is for problems</p>
+</div>
+<div id="section-5" class="section level1">
+<h1>6)</h1>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">km<span class="op">$</span>centers</a></code></pre></div>
+<pre><code>##   ligue1.Points ligue1.yellow.cards
+## 1         44.75             71.5625
+## 2         82.00             71.2500</code></pre>
+<p>coordinates of the 2 clusters centers are (44.75,71.5625) and (82.00,71.25)</p>
+</div>
+<div id="et-8" class="section level1">
+<h1>7) et 8)</h1>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">plot</span>(pointCards<span class="op">$</span>ligue1.Points,pointCards<span class="op">$</span>ligue1.yellow.cards,<span class="dt">col=</span>km<span class="op">$</span>cluster,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="fl">1.2</span>)</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="kw">points</span>(km<span class="op">$</span>centers,<span class="dt">pch=</span><span class="dv">4</span>,<span class="dt">cex=</span><span class="dv">3</span>,<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&#39;black&#39;</span>,<span class="st">&#39;red&#39;</span>))</a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="kw">text</span>(pointCards<span class="op">$</span>ligue1.Points,pointCards<span class="op">$</span>ligue1.yellow.cards,<span class="dt">labels=</span><span class="kw">row.names</span>(ligue1),<span class="dt">col=</span>km<span class="op">$</span>cluster)</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>We can see that the leader PSG don’t have a lot of yellow card so they are not that agressive The agressivity doesn’t tell that much about a team’s level because Marseille is the third but are very agressive and the less agressive team is in last teams Crosses represent centers</p>
+</div>
+<div id="section-6" class="section level1">
+<h1>9)</h1>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">km3 &lt;-<span class="st"> </span><span class="kw">kmeans</span>(pointCards,<span class="dt">centers=</span><span class="dv">3</span>,<span class="dt">iter.max =</span> <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb14-2" title="2">km4 &lt;-<span class="st"> </span><span class="kw">kmeans</span>(pointCards,<span class="dt">centers=</span><span class="dv">4</span>,<span class="dt">iter.max =</span> <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb14-3" title="3">km5 &lt;-<span class="st"> </span><span class="kw">kmeans</span>(pointCards,<span class="dt">centers=</span><span class="dv">5</span>,<span class="dt">iter.max =</span> <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb14-4" title="4"></a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>),<span class="dt">cex=</span><span class="fl">0.6</span>)</a>
+<a class="sourceLine" id="cb14-6" title="6"></a>
+<a class="sourceLine" id="cb14-7" title="7"><span class="kw">par</span>(<span class="dt">fig=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.5</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb14-8" title="8"><span class="kw">plot</span>(pointCards<span class="op">$</span>ligue1.Points,pointCards<span class="op">$</span>ligue1.yellow.cards,<span class="dt">col=</span>km3<span class="op">$</span>cluster,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="fl">1.2</span>,<span class="dt">main=</span><span class="st">&#39;3 clusters&#39;</span>)</a>
+<a class="sourceLine" id="cb14-9" title="9"><span class="kw">points</span>(km3<span class="op">$</span>centers,<span class="dt">pch=</span><span class="dv">4</span>,<span class="dt">cex=</span><span class="dv">3</span>,<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&#39;black&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;green&#39;</span>))</a>
+<a class="sourceLine" id="cb14-10" title="10"><span class="kw">text</span>(pointCards<span class="op">$</span>ligue1.Points,pointCards<span class="op">$</span>ligue1.yellow.cards,<span class="dt">labels=</span><span class="kw">row.names</span>(ligue1),<span class="dt">col=</span>km3<span class="op">$</span>cluster)</a>
+<a class="sourceLine" id="cb14-11" title="11"></a>
+<a class="sourceLine" id="cb14-12" title="12"><span class="kw">par</span>(<span class="dt">fig=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="fl">0.5</span>), <span class="dt">new=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb14-13" title="13"><span class="kw">plot</span>(pointCards<span class="op">$</span>ligue1.Points,pointCards<span class="op">$</span>ligue1.yellow.cards,<span class="dt">col=</span>km4<span class="op">$</span>cluster,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="fl">1.2</span>,<span class="dt">main=</span><span class="st">&#39;4 clusters&#39;</span>)</a>
+<a class="sourceLine" id="cb14-14" title="14"><span class="kw">points</span>(km4<span class="op">$</span>centers,<span class="dt">pch=</span><span class="dv">4</span>,<span class="dt">cex=</span><span class="dv">3</span>,<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&#39;black&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;green&#39;</span>,<span class="st">&#39;blue&#39;</span>))</a>
+<a class="sourceLine" id="cb14-15" title="15"><span class="kw">text</span>(pointCards<span class="op">$</span>ligue1.Points,pointCards<span class="op">$</span>ligue1.yellow.cards,<span class="dt">labels=</span><span class="kw">row.names</span>(ligue1),<span class="dt">col=</span>km4<span class="op">$</span>cluster)</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="section-7" class="section level1">
+<h1>10)</h1>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">wss &lt;-<span class="st"> </span>(<span class="kw">nrow</span>(ligue1)<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="kw">sum</span>(<span class="kw">apply</span>(ligue1,<span class="dv">2</span>,var))</a>
+<a class="sourceLine" id="cb15-2" title="2">  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">15</span>) wss[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">kmeans</span>(ligue1,</a>
+<a class="sourceLine" id="cb15-3" title="3">                                       <span class="dt">centers=</span>i)<span class="op">$</span>withinss)</a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, wss, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Number of Clusters&quot;</span>,</a>
+<a class="sourceLine" id="cb15-5" title="5">     <span class="dt">ylab=</span><span class="st">&quot;Within groups sum of squares&quot;</span>)</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="section-8" class="section level1">
+<h1>11)</h1>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">round</span>(km3<span class="op">$</span>betweenss<span class="op">/</span>km3<span class="op">$</span>totss,<span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## [1] 0.79</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">round</span>(km4<span class="op">$</span>betweenss<span class="op">/</span>km4<span class="op">$</span>totss,<span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## [1] 0.862</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">wss &lt;-<span class="st"> </span>(<span class="kw">nrow</span>(ligue1)<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="kw">sum</span>(<span class="kw">apply</span>(ligue1,<span class="dv">2</span>,var))</a>
+<a class="sourceLine" id="cb20-2" title="2">  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">15</span>) wss[i] &lt;-<span class="st"> </span>(<span class="kw">kmeans</span>(ligue1,<span class="dt">centers=</span>i)<span class="op">$</span>betweenss)<span class="op">/</span>(<span class="kw">kmeans</span>(ligue1,</a>
+<a class="sourceLine" id="cb20-3" title="3">                                       <span class="dt">centers=</span>i)<span class="op">$</span>totss)</a>
+<a class="sourceLine" id="cb20-4" title="4"><span class="kw">plot</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">15</span>, wss[<span class="op">-</span><span class="dv">1</span>], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Number of Clusters&quot;</span>,</a>
+<a class="sourceLine" id="cb20-5" title="5">     <span class="dt">ylab=</span><span class="st">&quot;Between sum of squares divide by total sum of squares&quot;</span>)</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>So high similarity in a cluster = low value of within_ss (variance in a cluster)<br />
+low similarity between clusters = high between_ss (variance between clusters)<br />
+the goal is to maximize the value ( between_ss/total_ss)<br />
+On the graphs, we can see that we should take 6 or 8 clusters because this is where we the elbow is showing</p>
+</div>
+<div id="ligue-1" class="section level1">
+<h1>Ligue 1</h1>
+</div>
+<div id="section-9" class="section level1">
+<h1>12)</h1>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">ligue1_scaled&lt;-<span class="kw">data.frame</span>(<span class="kw">scale</span>(ligue1,<span class="dt">center=</span><span class="ot">TRUE</span>,<span class="dt">scale=</span><span class="ot">TRUE</span>))</a></code></pre></div>
+</div>
+<div id="section-10" class="section level1">
+<h1>13)</h1>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb22-2" title="2">km.ligue1 &lt;-<span class="st"> </span><span class="kw">kmeans</span>(ligue1,<span class="dt">centers=</span><span class="dv">3</span>,<span class="dt">iter.max =</span> <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb22-3" title="3">km.ligue1_scaled &lt;-<span class="st"> </span><span class="kw">kmeans</span>(ligue1_scaled,<span class="dt">centers=</span><span class="dv">3</span>,<span class="dt">iter.max =</span> <span class="dv">20</span>)</a></code></pre></div>
+</div>
+<div id="section-11" class="section level1">
+<h1>14)</h1>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">table</span>(km.ligue1<span class="op">$</span>cluster)</a></code></pre></div>
+<pre><code>## 
+## 1 2 3 
+## 8 4 8</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">table</span>(km.ligue1_scaled<span class="op">$</span>cluster)</a></code></pre></div>
+<pre><code>## 
+## 1 2 3 
+## 8 8 4</code></pre>
+<p>In both dataframes we have 20 observations<br />
+But the clusters are differents and not composed the same way, in the scaled df<br />
+PSG is alone in one cluster due to the fact that they were much more better than any other team<br />
+That’s how we got clusters with so much teams in it with the scaled df</p>
+</div>
+<div id="pca" class="section level1">
+<h1>PCA</h1>
+</div>
+<div id="et-16" class="section level1">
+<h1>15) et 16)</h1>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb27-2" title="2">pcaligue1=<span class="kw">princomp</span>(ligue1[,],<span class="dt">cor=</span>T)</a>
+<a class="sourceLine" id="cb27-3" title="3"><span class="kw">summary</span>(pcaligue1)</a></code></pre></div>
+<pre><code>## Importance of components:
+##                           Comp.1    Comp.2     Comp.3     Comp.4     Comp.5
+## Standard deviation     3.5625641 1.4189896 1.24505724 1.07174292 0.87228723
+## Proportion of Variance 0.6345931 0.1006766 0.07750838 0.05743164 0.03804425
+## Cumulative Proportion  0.6345931 0.7352697 0.81277809 0.87020973 0.90825398
+##                            Comp.6     Comp.7     Comp.8      Comp.9     Comp.10
+## Standard deviation     0.75515507 0.69719030 0.60689769 0.398425771 0.314733156
+## Proportion of Variance 0.02851296 0.02430372 0.01841624 0.007937155 0.004952848
+## Cumulative Proportion  0.93676694 0.96107066 0.97948690 0.987424054 0.992376902
+##                            Comp.11     Comp.12     Comp.13      Comp.14
+## Standard deviation     0.281317695 0.193479074 0.164713779 0.0788496294
+## Proportion of Variance 0.003956982 0.001871708 0.001356531 0.0003108632
+## Cumulative Proportion  0.996333884 0.998205592 0.999562123 0.9998729866
+##                             Comp.15      Comp.16      Comp.17      Comp.18
+## Standard deviation     0.0451501280 0.0223692182 1.163093e-03 6.714858e-09
+## Proportion of Variance 0.0001019267 0.0000250191 6.763926e-08 2.254466e-18
+## Cumulative Proportion  0.9999749133 0.9999999324 1.000000e+00 1.000000e+00
+##                        Comp.19 Comp.20
+## Standard deviation           0       0
+## Proportion of Variance       0       0
+## Cumulative Proportion        1       1</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="kw">biplot</span>(pcaligue1,<span class="dt">panel.firsy=</span><span class="kw">grid</span>())</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>It is important to scale the data when we apply a PCA<br />
+Because we have to maximize the variance in the data in order to project the data in many dimensions<br />
+and transform the vector so that we have a unit norm<br />
+THe 5 first components gather 91% of information<br />
+The 2 first PC gather 63% and 10 %<br />
+Variables that contribute the most of PC1 are wins,difference goals,shots ect<br />
+and variables that contribute for PC2 are Draws, yellow cards;red cards, fouls ect<br />
+For example Paris has a lot of wins, red cards and fouls against sum<br />
+Applying PCA on the normal and the scaled dataset give the same result<br />
+We don’t need to apply on the scaled dataset because all the teams are evaluated on the same rules, in other termes values are already scaled</p>
+</div>
+<div id="section-12" class="section level1">
+<h1>17)</h1>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">require</span>(factoextra)</a></code></pre></div>
+<pre><code>## Loading required package: factoextra</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre><code>## Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">fviz_cluster</span>(km.ligue1, <span class="dt">data =</span> ligue1, <span class="co"># km.ligue1 is where you stored your kmeans results</span></a>
+<a class="sourceLine" id="cb34-2" title="2">              <span class="dt">palette =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>), <span class="co"># 3 colors since 3 clusters</span></a>
+<a class="sourceLine" id="cb34-3" title="3">              <span class="dt">ggtheme =</span> <span class="kw">theme_minimal</span>(),</a>
+<a class="sourceLine" id="cb34-4" title="4">              <span class="dt">main =</span> <span class="st">&quot;Clustering Plot&quot;</span></a>
+<a class="sourceLine" id="cb34-5" title="5">)</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>We can see 3 clusters as stated when we applied k means on ligue 1 Df<br />
+The plot colors each groups</p>
+</div>
+<div id="section-13" class="section level1">
+<h1>18)</h1>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">kmPCA&lt;-<span class="kw">kmeans</span>(pcaligue1<span class="op">$</span>scores[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dt">centers=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb35-2" title="2">(km.ligue1<span class="op">$</span>betweenss<span class="op">/</span>km.ligue1<span class="op">$</span>totss)</a></code></pre></div>
+<pre><code>## [1] 0.6643269</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">(kmPCA<span class="op">$</span>betweenss<span class="op">/</span>kmPCA<span class="op">$</span>totss)</a></code></pre></div>
+<pre><code>## [1] 0.7448907</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="kw">fviz_cluster</span>(kmPCA, <span class="dt">data =</span> ligue1, <span class="co"># km.ligue1 is where you stored your kmeans results</span></a>
+<a class="sourceLine" id="cb39-2" title="2">              <span class="dt">palette =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>), <span class="co"># 3 colors since 3 clusters</span></a>
+<a class="sourceLine" id="cb39-3" title="3">              <span class="dt">ggtheme =</span> <span class="kw">theme_minimal</span>(),</a>
+<a class="sourceLine" id="cb39-4" title="4">              <span class="dt">main =</span> <span class="st">&quot;Clustering Plot&quot;</span></a>
+<a class="sourceLine" id="cb39-5" title="5">)</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>The previous visualisation is with all the variables showing their contribution on each PC<br />
+We apply k means on the matrix concerning PC1 and PC2<br />
+These 3 clusters look like the previous clusters so PCA and Kmeans in this case are similar</p>
+</div>
+<div id="implementing-k-means" class="section level1">
+<h1>Implementing k means</h1>
+</div>
+<div id="section-14" class="section level1">
+<h1>19)</h1>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1">df&lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;x1&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">4</span>), <span class="st">&quot;x2&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb40-2" title="2"><span class="co">#kmdf&lt;-kmeans(df,centers=2,iter.max = 3)</span></a>
+<a class="sourceLine" id="cb40-3" title="3"><span class="co">#plot(df$x1,df$x2,col=km$cluster,pch=18)</span></a>
+<a class="sourceLine" id="cb40-4" title="4"><span class="co">#points(kmdf$centers,pch=5,cex=3,lwd=3,col=c(&#39;black&#39;,&#39;red&#39;))</span></a>
+<a class="sourceLine" id="cb40-5" title="5"><span class="co">#text(df$x1,df$x2,labels=row.names(df),col=km$cluster,adj = c(df$x1+0.2,df$x2))</span></a>
+<a class="sourceLine" id="cb40-6" title="6"></a>
+<a class="sourceLine" id="cb40-7" title="7"><span class="kw">plot</span>(df<span class="op">$</span>x1,df<span class="op">$</span>x2,<span class="dt">col=</span><span class="st">&#39;blue&#39;</span>,<span class="dt">pch=</span><span class="dv">18</span>)</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Here we plot x1 in function of x2</p>
+</div>
+<div id="section-15" class="section level1">
+<h1>20)</h1>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb41-2" title="2">df[<span class="st">&#39;label&#39;</span>]=<span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb41-3" title="3"><span class="kw">plot</span>(df<span class="op">$</span>x1,df<span class="op">$</span>x2,<span class="dt">col=</span>df<span class="op">$</span>label,<span class="dt">pch=</span><span class="dv">18</span>)</a>
+<a class="sourceLine" id="cb41-4" title="4"><span class="kw">text</span>(df<span class="op">$</span>x1,df<span class="op">$</span>x2,<span class="dt">labels=</span><span class="kw">row.names</span>(df),<span class="dt">col=</span>df<span class="op">$</span>label,<span class="dt">adj =</span> <span class="kw">c</span>(df<span class="op">$</span>x1<span class="fl">+0.15</span>,df<span class="op">$</span>x2))</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>here we randomly gave a label to each oberservation</p>
+</div>
+<div id="section-16" class="section level1">
+<h1>21)</h1>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">cluster1=<span class="kw">subset</span>(df, label<span class="op">==</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb42-2" title="2">xcluster1&lt;-<span class="kw">mean</span>(cluster1<span class="op">$</span>x1)</a>
+<a class="sourceLine" id="cb42-3" title="3">ycluster1&lt;-<span class="kw">mean</span>(cluster1<span class="op">$</span>x2)</a>
+<a class="sourceLine" id="cb42-4" title="4"><span class="kw">plot</span>(df<span class="op">$</span>x1,df<span class="op">$</span>x2,<span class="dt">col=</span>df<span class="op">$</span>label,<span class="dt">pch=</span><span class="dv">18</span>)</a>
+<a class="sourceLine" id="cb42-5" title="5"><span class="kw">text</span>(df<span class="op">$</span>x1,df<span class="op">$</span>x2,<span class="dt">labels=</span><span class="kw">row.names</span>(df),<span class="dt">col=</span>df<span class="op">$</span>label,<span class="dt">adj =</span> <span class="kw">c</span>(df<span class="op">$</span>x1<span class="fl">+0.15</span>,df<span class="op">$</span>x2))</a>
+<a class="sourceLine" id="cb42-6" title="6"><span class="kw">points</span>(xcluster1,ycluster1,<span class="dt">pch=</span><span class="dv">5</span>,<span class="dt">cex=</span><span class="dv">3</span>,<span class="dt">lwd=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb42-7" title="7">centroid1&lt;-<span class="kw">data.frame</span>(<span class="st">&#39;x1&#39;</span>=<span class="kw">c</span>(xcluster1),<span class="st">&#39;x2&#39;</span>=<span class="kw">c</span>(ycluster1),<span class="st">&#39;label&#39;</span>=cluster1<span class="op">$</span>label)</a>
+<a class="sourceLine" id="cb42-8" title="8"></a>
+<a class="sourceLine" id="cb42-9" title="9">cluster2=<span class="kw">subset</span>(df, label<span class="op">==</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb42-10" title="10">xcluster2&lt;-<span class="kw">mean</span>(cluster2<span class="op">$</span>x1)</a>
+<a class="sourceLine" id="cb42-11" title="11">ycluster2&lt;-<span class="kw">mean</span>(cluster2<span class="op">$</span>x2)</a>
+<a class="sourceLine" id="cb42-12" title="12"><span class="kw">points</span>(xcluster2,ycluster2,<span class="dt">pch=</span><span class="dv">5</span>,<span class="dt">cex=</span><span class="dv">3</span>,<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">centroid2&lt;-<span class="kw">data.frame</span>(<span class="st">&#39;x1&#39;</span>=<span class="kw">c</span>(xcluster2),<span class="st">&#39;x2&#39;</span>=<span class="kw">c</span>(ycluster2),<span class="st">&#39;label&#39;</span>=cluster2<span class="op">$</span>label)</a></code></pre></div>
+<p>the square represents the centroid of each cluster To have this center we have to do the mean of observations of each clusters</p>
+</div>
+<div id="section-17" class="section level1">
+<h1>22)</h1>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">euc.dist &lt;-<span class="st"> </span><span class="cf">function</span>(obs1, obs2){res &lt;-<span class="kw">sqrt</span>(((obs2[<span class="dv">1</span>,<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>obs1[<span class="dv">1</span>,<span class="dv">1</span>]) <span class="op">^</span><span class="st"> </span><span class="dv">2</span>)<span class="op">+</span>((obs2[<span class="dv">1</span>,<span class="dv">2</span>]<span class="op">-</span>obs1[<span class="dv">1</span>,<span class="dv">2</span>])<span class="op">^</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb44-2" title="2">  <span class="kw">return</span>(res)</a>
+<a class="sourceLine" id="cb44-3" title="3">}</a>
+<a class="sourceLine" id="cb44-4" title="4"><span class="kw">euc.dist</span>(df[<span class="dv">4</span>,],df[<span class="dv">1</span>,])</a></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">centroid1[<span class="dv">1</span>,][<span class="st">&#39;label&#39;</span>]</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["label"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","_rn_":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">df[<span class="dv">4</span>,][<span class="st">&#39;label&#39;</span>]</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["label"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>obs1 and obs2 reprensent coordinates of the observation</p>
+</div>
+<div id="section-18" class="section level1">
+<h1>23)</h1>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(df)[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb48-2" title="2">  {</a>
+<a class="sourceLine" id="cb48-3" title="3">    <span class="cf">if</span>(<span class="kw">euc.dist</span>(df[i,],centroid1[<span class="dv">1</span>,])<span class="op">&gt;</span><span class="kw">euc.dist</span>(df[i,],centroid2[<span class="dv">1</span>,]))</a>
+<a class="sourceLine" id="cb48-4" title="4">    {</a>
+<a class="sourceLine" id="cb48-5" title="5">      df[i,][<span class="st">&#39;label&#39;</span>]=centroid2[<span class="dv">1</span>,][<span class="st">&#39;label&#39;</span>]</a>
+<a class="sourceLine" id="cb48-6" title="6">    }</a>
+<a class="sourceLine" id="cb48-7" title="7">    <span class="cf">else</span></a>
+<a class="sourceLine" id="cb48-8" title="8">    {</a>
+<a class="sourceLine" id="cb48-9" title="9">      df[i,][<span class="st">&#39;label&#39;</span>]=centroid1[<span class="dv">1</span>,][<span class="st">&#39;label&#39;</span>]</a>
+<a class="sourceLine" id="cb48-10" title="10">    }</a>
+<a class="sourceLine" id="cb48-11" title="11">  }</a>
+<a class="sourceLine" id="cb48-12" title="12"></a>
+<a class="sourceLine" id="cb48-13" title="13">df</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["x1"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["x2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["label"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"4","3":"2"},{"1":"1","2":"3","3":"2"},{"1":"0","2":"4","3":"2"},{"1":"5","2":"1","3":"1"},{"1":"6","2":"2","3":"1"},{"1":"4","2":"0","3":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>We have to test check the distance between of each observation and each centroid<br />
+The centroid which is the closest to each observation gives it his label</p>
+</div>
+<div id="section-19" class="section level1">
+<h1>24)</h1>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="cf">while</span>((<span class="kw">euc.dist</span>(centroid1[<span class="dv">1</span>,], centroid1[<span class="dv">1</span>,])<span class="op">&gt;</span><span class="fl">0.001</span>) <span class="op">&amp;</span><span class="st"> </span>(<span class="kw">euc.dist</span>(centroid2[<span class="dv">1</span>,], centroid2[<span class="dv">1</span>,])<span class="op">&gt;</span><span class="fl">0.001</span>))</a>
+<a class="sourceLine" id="cb49-2" title="2">{</a>
+<a class="sourceLine" id="cb49-3" title="3">  cluster1=<span class="kw">subset</span>(df, label<span class="op">==</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb49-4" title="4">  xcluster1&lt;-<span class="kw">mean</span>(cluster1<span class="op">$</span>x1)</a>
+<a class="sourceLine" id="cb49-5" title="5">  ycluster1&lt;-<span class="kw">mean</span>(cluster1<span class="op">$</span>x2)</a>
+<a class="sourceLine" id="cb49-6" title="6">  <span class="kw">plot</span>(df<span class="op">$</span>x1,df<span class="op">$</span>x2,<span class="dt">col=</span>df<span class="op">$</span>label,<span class="dt">pch=</span><span class="dv">18</span>)</a>
+<a class="sourceLine" id="cb49-7" title="7">  <span class="kw">text</span>(df<span class="op">$</span>x1,df<span class="op">$</span>x2,<span class="dt">labels=</span><span class="kw">row.names</span>(df),<span class="dt">col=</span>df<span class="op">$</span>label,<span class="dt">adj =</span> <span class="kw">c</span>(df<span class="op">$</span>x1<span class="fl">+0.15</span>,df<span class="op">$</span>x2))</a>
+<a class="sourceLine" id="cb49-8" title="8">  <span class="kw">points</span>(xcluster1,ycluster1,<span class="dt">pch=</span><span class="dv">5</span>,<span class="dt">cex=</span><span class="dv">3</span>,<span class="dt">lwd=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb49-9" title="9">  centroid1&lt;-<span class="kw">data.frame</span>(<span class="st">&#39;x1&#39;</span>=<span class="kw">c</span>(xcluster1),<span class="st">&#39;x2&#39;</span>=<span class="kw">c</span>(ycluster1),<span class="st">&#39;label&#39;</span>=cluster1<span class="op">$</span>label)</a>
+<a class="sourceLine" id="cb49-10" title="10">  </a>
+<a class="sourceLine" id="cb49-11" title="11">  cluster2=<span class="kw">subset</span>(df, label<span class="op">==</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb49-12" title="12">  xcluster2&lt;-<span class="kw">mean</span>(cluster2<span class="op">$</span>x1)</a>
+<a class="sourceLine" id="cb49-13" title="13">  ycluster2&lt;-<span class="kw">mean</span>(cluster2<span class="op">$</span>x2)</a>
+<a class="sourceLine" id="cb49-14" title="14">  <span class="kw">points</span>(xcluster2,ycluster2,<span class="dt">pch=</span><span class="dv">5</span>,<span class="dt">cex=</span><span class="dv">3</span>,<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</a>
+<a class="sourceLine" id="cb49-15" title="15">  centroid2&lt;-<span class="kw">data.frame</span>(<span class="st">&#39;x1&#39;</span>=<span class="kw">c</span>(xcluster2),<span class="st">&#39;x2&#39;</span>=<span class="kw">c</span>(ycluster2),<span class="st">&#39;label&#39;</span>=cluster2<span class="op">$</span>label)</a>
+<a class="sourceLine" id="cb49-16" title="16">  </a>
+<a class="sourceLine" id="cb49-17" title="17">  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(df)[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb49-18" title="18">    {</a>
+<a class="sourceLine" id="cb49-19" title="19">      <span class="cf">if</span>(<span class="kw">euc.dist</span>(df[i,],centroid1[<span class="dv">1</span>,])<span class="op">&gt;</span><span class="kw">euc.dist</span>(df[i,],centroid2[<span class="dv">1</span>,]))</a>
+<a class="sourceLine" id="cb49-20" title="20">      {</a>
+<a class="sourceLine" id="cb49-21" title="21">        df[i,][<span class="st">&#39;label&#39;</span>]=centroid2[<span class="dv">1</span>,][<span class="st">&#39;label&#39;</span>]</a>
+<a class="sourceLine" id="cb49-22" title="22">      }</a>
+<a class="sourceLine" id="cb49-23" title="23">      <span class="cf">else</span></a>
+<a class="sourceLine" id="cb49-24" title="24">      {</a>
+<a class="sourceLine" id="cb49-25" title="25">        df[i,][<span class="st">&#39;label&#39;</span>]=centroid1[<span class="dv">1</span>,][<span class="st">&#39;label&#39;</span>]</a>
+<a class="sourceLine" id="cb49-26" title="26">      }</a>
+<a class="sourceLine" id="cb49-27" title="27">    }</a>
+<a class="sourceLine" id="cb49-28" title="28">}</a></code></pre></div>
+<p>we have to do a while loop to verify that from one iteration to the next iteration, the euclidian distance between x and y of the centroid is not superior to 0.001, if it is the case we compute question 21 and 23 until the values of centroid are stable and we update at every iteration all values</p>
+</div>
+<div id="section-20" class="section level1">
+<h1>25)</h1>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="kw">plot</span>(df<span class="op">$</span>x1,df<span class="op">$</span>x2,<span class="dt">col=</span>df<span class="op">$</span>label,<span class="dt">pch=</span><span class="dv">18</span>)</a>
+<a class="sourceLine" id="cb50-2" title="2"><span class="kw">text</span>(df<span class="op">$</span>x1,df<span class="op">$</span>x2,<span class="dt">labels=</span><span class="kw">row.names</span>(df),<span class="dt">col=</span>df<span class="op">$</span>label,<span class="dt">adj =</span> <span class="kw">c</span>(df<span class="op">$</span>x1<span class="fl">+0.15</span>,df<span class="op">$</span>x2))</a>
+<a class="sourceLine" id="cb50-3" title="3"><span class="kw">points</span>(xcluster1,ycluster1,<span class="dt">pch=</span><span class="dv">5</span>,<span class="dt">cex=</span><span class="dv">3</span>,<span class="dt">lwd=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb50-4" title="4"><span class="kw">points</span>(xcluster2,ycluster2,<span class="dt">pch=</span><span class="dv">5</span>,<span class="dt">cex=</span><span class="dv">3</span>,<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+</div>
+<div id="hierarchical-clustering-on-iris-dataset" class="section level1">
+<h1>Hierarchical clustering on Iris DataSet</h1>
+</div>
+<div id="section-21" class="section level1">
+<h1>1)</h1>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">irisdf&lt;-<span class="kw">read.csv</span>(<span class="st">&#39;iris.data&#39;</span>)</a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="co">#iris_scaled=data.frame(scale(irisdf[,-5]))</span></a></code></pre></div>
+</div>
+<div id="section-22" class="section level1">
+<h1>2)</h1>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb52-2" title="2">sampleiris=irisdf[<span class="kw">sample</span>(<span class="kw">nrow</span>(irisdf),<span class="dv">40</span>),]</a>
+<a class="sourceLine" id="cb52-3" title="3"><span class="kw">dim</span>(sampleiris)</a></code></pre></div>
+<pre><code>## [1] 40  5</code></pre>
+</div>
+<div id="section-23" class="section level1">
+<h1>3)</h1>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">D&lt;-<span class="kw">dist</span>(sampleiris[,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</a></code></pre></div>
+</div>
+<div id="section-24" class="section level1">
+<h1>4)</h1>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">dendro.avg&lt;-<span class="kw">hclust</span>(D,<span class="st">&#39;average&#39;</span>)</a></code></pre></div>
+</div>
+<div id="section-25" class="section level1">
+<h1>5)</h1>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="kw">plot</span>(dendro.avg)</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+</div>
+<div id="section-26" class="section level1">
+<h1>6)</h1>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">plot</span>(dendro.avg, <span class="dt">hang=</span><span class="op">-</span><span class="dv">1</span>, <span class="dt">label=</span>sampleiris<span class="op">$</span>class)</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+</div>
+<div id="section-27" class="section level1">
+<h1>7)</h1>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1">groups.avg&lt;-<span class="kw">cutree</span>(dendro.avg,<span class="dv">3</span>)</a></code></pre></div>
+</div>
+<div id="section-28" class="section level1">
+<h1>8)</h1>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1"><span class="kw">plot.new</span>()</a>
+<a class="sourceLine" id="cb59-2" title="2"><span class="kw">plot</span>(dendro.avg)</a>
+<a class="sourceLine" id="cb59-3" title="3"><span class="kw">rect.hclust</span>(dendro.avg,<span class="dt">k=</span><span class="dv">3</span>,<span class="dt">border =</span> <span class="kw">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;green&#39;</span>))</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+</div>
+<div id="section-29" class="section level1">
+<h1>9)</h1>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">res9&lt;-<span class="kw">table</span>(groups.avg,sampleiris[,<span class="dv">5</span>])</a>
+<a class="sourceLine" id="cb60-2" title="2"><span class="kw">summary</span>(res9)</a></code></pre></div>
+<pre><code>## Number of cases in table: 40 
+## Number of factors: 2 
+## Test for independence of all factors:
+##  Chisq = 48.18, df = 4, p-value = 8.649e-10
+##  Chi-squared approximation may be incorrect</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1">accuracyres=(res9[<span class="dv">2</span>,<span class="dv">2</span>]<span class="op">+</span>res9[<span class="dv">1</span>,<span class="dv">1</span>]<span class="op">+</span>res9[<span class="dv">3</span>,<span class="dv">3</span>])<span class="op">/</span><span class="kw">sum</span>(res9)</a>
+<a class="sourceLine" id="cb62-2" title="2">accuracyres</a></code></pre></div>
+<pre><code>## [1] 0.75</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="kw">plot</span>(dendro.avg)</a>
+<a class="sourceLine" id="cb64-2" title="2"><span class="kw">rect.hclust</span>(dendro.avg,<span class="dt">k=</span><span class="dv">3</span>,<span class="dt">border =</span> <span class="kw">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;green&#39;</span>))</a>
+<a class="sourceLine" id="cb64-3" title="3"><span class="kw">identify</span>(dendro.avg)</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p>We have a high level of identity is almost perfect<br />
+The p value is very low and the accuracy is 0.925 which is very high</p>
+</div>
+<div id="section-30" class="section level1">
+<h1>10)</h1>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1">disIris&lt;-<span class="kw">dist</span>(irisdf[,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</a>
+<a class="sourceLine" id="cb65-2" title="2"></a>
+<a class="sourceLine" id="cb65-3" title="3">dendro.IrisAverage&lt;-<span class="kw">hclust</span>(disIris,<span class="st">&#39;average&#39;</span>)</a>
+<a class="sourceLine" id="cb65-4" title="4"><span class="kw">plot</span>(dendro.IrisAverage)</a>
+<a class="sourceLine" id="cb65-5" title="5">groupsIrisAverage&lt;-<span class="kw">cutree</span>(dendro.IrisAverage,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb65-6" title="6"><span class="kw">plot</span>(dendro.IrisAverage)</a>
+<a class="sourceLine" id="cb65-7" title="7"><span class="kw">rect.hclust</span>(dendro.IrisAverage,<span class="dt">k=</span><span class="dv">3</span>,<span class="dt">border =</span> <span class="kw">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;green&#39;</span>))</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">res10Average&lt;-<span class="kw">table</span>(groupsIrisAverage,irisdf[,<span class="dv">5</span>])</a>
+<a class="sourceLine" id="cb66-2" title="2">accuracyAverage=(res10Average[<span class="dv">2</span>,<span class="dv">2</span>]<span class="op">+</span>res10Average[<span class="dv">1</span>,<span class="dv">1</span>]<span class="op">+</span>res10Average[<span class="dv">3</span>,<span class="dv">3</span>])<span class="op">/</span><span class="kw">sum</span>(res10Average)</a>
+<a class="sourceLine" id="cb66-3" title="3">accuracyres</a></code></pre></div>
+<pre><code>## [1] 0.75</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">dendro.IrisComplete&lt;-<span class="kw">hclust</span>(disIris,<span class="st">&#39;complete&#39;</span>)</a>
+<a class="sourceLine" id="cb68-2" title="2"><span class="kw">plot</span>(dendro.IrisComplete)</a>
+<a class="sourceLine" id="cb68-3" title="3">groupsIrisComplete&lt;-<span class="kw">cutree</span>(dendro.IrisComplete,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb68-4" title="4"><span class="kw">plot</span>(dendro.IrisComplete)</a>
+<a class="sourceLine" id="cb68-5" title="5"><span class="kw">rect.hclust</span>(dendro.IrisComplete,<span class="dt">k=</span><span class="dv">3</span>,<span class="dt">border =</span> <span class="kw">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;green&#39;</span>))</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-33-2.png" width="672" /></p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1">res10Complete&lt;-<span class="kw">table</span>(groupsIrisComplete,irisdf[,<span class="dv">5</span>])</a>
+<a class="sourceLine" id="cb69-2" title="2">accuracyAverage=(res10Complete[<span class="dv">2</span>,<span class="dv">2</span>]<span class="op">+</span>res10Complete[<span class="dv">1</span>,<span class="dv">1</span>]<span class="op">+</span>res10Complete[<span class="dv">3</span>,<span class="dv">3</span>])<span class="op">/</span><span class="kw">sum</span>(res10Complete)</a>
+<a class="sourceLine" id="cb69-3" title="3">accuracyres</a></code></pre></div>
+<pre><code>## [1] 0.75</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1">res10Complete</a></code></pre></div>
+<pre><code>##                   
+## groupsIrisComplete setosa versicolor virginica
+##                  1     50          0         0
+##                  2      0         23        49
+##                  3      0         27         1</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">dendro.IrisSingle&lt;-<span class="kw">hclust</span>(disIris,<span class="st">&#39;single&#39;</span>)</a>
+<a class="sourceLine" id="cb73-2" title="2"><span class="kw">plot</span>(dendro.IrisSingle)</a>
+<a class="sourceLine" id="cb73-3" title="3">groupsIrisSingle&lt;-<span class="kw">cutree</span>(dendro.IrisSingle,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb73-4" title="4"><span class="kw">plot</span>(dendro.IrisSingle)</a>
+<a class="sourceLine" id="cb73-5" title="5"><span class="kw">rect.hclust</span>(dendro.IrisSingle,<span class="dt">k=</span><span class="dv">3</span>,<span class="dt">border =</span> <span class="kw">c</span>(<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;green&#39;</span>))</a></code></pre></div>
+<p><img src="pw7_files/figure-html/unnamed-chunk-33-3.png" width="672" /></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">res10Single&lt;-<span class="kw">table</span>(groupsIrisSingle,irisdf[,<span class="dv">5</span>])</a>
+<a class="sourceLine" id="cb74-2" title="2">accuracyAverage=(res10Single[<span class="dv">2</span>,<span class="dv">2</span>]<span class="op">+</span>res10Single[<span class="dv">1</span>,<span class="dv">1</span>]<span class="op">+</span>res10Single[<span class="dv">3</span>,<span class="dv">3</span>])<span class="op">/</span><span class="kw">sum</span>(res10Single)</a>
+<a class="sourceLine" id="cb74-3" title="3">accuracyres</a></code></pre></div>
+<pre><code>## [1] 0.75</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">res10Single</a></code></pre></div>
+<pre><code>##                 
+## groupsIrisSingle setosa versicolor virginica
+##                1     50          0         0
+##                2      0         50        48
+##                3      0          0         2</code></pre>
+<p>For the average, the accuracy is 0.91 For the complete, the accuracy is also 0.91 For the single, the accuracy is is also 0.91 We always have the same accuracy but we have different confusion matrices</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

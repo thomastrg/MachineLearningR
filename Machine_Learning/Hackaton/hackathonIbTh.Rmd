@@ -1,0 +1,164 @@
+---
+title: "Hackaton"
+author: "Ibrahim&Thomas"
+date: "`r format(Sys.time())`" # remove the # to show the date
+
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    theme: spacelab
+    highlight: zenburn
+    df_print: paged
+editor_options: 
+  chunk_output_type: inline
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+body{
+     font-family: Helvetica;
+     font-size: 16pt;
+}
+/* Headers */
+h1,h2,h3,h4,h5,h6{
+     font-size: 24pt;
+}
+Set the seed with Ibrahim's student number 
+```{r}
+set.seed(704195)
+```
+
+# Import Libraries 
+
+```{r}
+library(corrplot) # used to visualize the correlations between the columns of our dataset
+library(randomForest) # used for Random Forest model
+library(gbm) # used for Boosting model
+library(MLmetrics)
+```
+
+
+
+
+# Read the dataset
+
+```{r}
+train <- read.csv("data.csv")
+test <- read.csv("test.csv")
+```
+
+### Preprocess the data
+In this part, we are doing features selection to train our data.
+ 
+First of all, we dropped columns 'month','day_of_week', 'previous', 'pdays' because we thought that the 'poutcome' column was the most important column about the previous campaign with the same customer. Because it gives us the result of the previous campaign.
+Then we also dropped the column 'contact' because 
+```{r}
+train <- subset(train,select = -c(month,day_of_week,education,job,marital,contact,previous,pdays))
+test <- subset(test,select = -c(month,day_of_week,education, job,marital,contact,previous,pdays))
+```
+
+
+### Modify these columns in order to put a hierarchy between these, we did it for training and test sets
+```{r}
+# #train$education = ifelse(train$education == "illiterate",0,ifelse(train$education =="basic.4y",1,
+#                                                                   ifelse(train$education == "basic.6y",2,
+#                                                                   ifelse(train$education == "basic.9y",3,
+#                                                                   ifelse(train$education == "high.school",4,
+#                                                                   ifelse(train$education == "professional.course",5,
+#                                                                   ifelse(train$education == "university.degree",6,-1)))))))
+
+# #test$education = ifelse(test$education == "illiterate",0,ifelse(test$education =="basic.4y",1,
+#                                                                   ifelse(test$education == "basic.6y",2,
+#                                                                   ifelse(test$education == "basic.9y",3,
+#                                                                   ifelse(test$education == "high.school",4,
+#                                                                   ifelse(test$education == "professional.course",5,
+#                                                                   ifelse(test$education == "university.degree",6,-1)))))))
+```
+
+
+
+### Mapping binary categorical values on both sets
+```{r}
+train$default = ifelse(train$default == "no", 1,ifelse(train$default == "yes", -1,0))
+train$housing = ifelse(train$housing == "yes", 1,ifelse(train$housing == "no", 0,-1))
+train$loan = ifelse(train$loan == "yes", 1,ifelse(train$loan == "no", 0,-1))
+train$poutcome = ifelse(train$poutcome == "success",1,ifelse(train$poutcome == "failure",0,-1))
+train$y = ifelse(train$y == 'yes',1,0)
+train$duration = scale(train$duration)
+```
+
+```{r}
+test$default = ifelse(test$default == "no", 1,ifelse(test$default == "yes", -1,0))
+test$housing = ifelse(test$housing == "yes", 1,ifelse(test$housing == "no", 0,-1))
+test$loan = ifelse(test$loan == "yes", 1,ifelse(test$loan == "no", 0,-1))
+test$poutcome = ifelse(test$poutcome == "success",1,ifelse(test$poutcome == "failure",0,-1))
+test$duration = scale(test$duration)
+```
+
+
+
+
+### Split the train set into a training_set and a testing_set in order to be able to test befor submitting
+
+```{r}
+library(caTools)
+split = sample.split(train$y, SplitRatio = 0.75)
+training_set = subset(train, split == TRUE)
+test_set = subset(train, split == FALSE)
+```
+
+
+
+# EDA : Exploratory Data Analysis of the training set 
+
+```{r}
+summary(train)
+str(train)
+names(train)
+dim(train)
+head(train)
+
+```
+
+
+
+
+# Models application
+
+
+## 1) Logistic Regression 
+
+
+
+
+### Fit the logistic regression on the sub-training_set that we created in order to pre-estimate before submitting on Kaggle
+```{r}
+model_glm = glm(y~.,data=training_set,family="binomial")
+pred_glm = predict(model_glm,test_set)
+predicted_vect = ifelse(pred_glm > 0.35,1,0)
+```
+
+We predict on the test_set that we also created byt splitting
+```{r}
+F1_Score(test_set$y,predicted_vect)
+```
+
+
+
+
+```{r}
+boost <- gbm(y ~ ., data = training_set, distribution = "bernoulli",
+            n.trees = 5000, interaction.depth = 6, shrinkage = 0.004,n.minobsinnode = 3)
+boost.pred <- predict(boost, newdata = test_set, type = "response")
+boost.pred <- ifelse(boost.pred >0.5, 1, 0)
+```
+
+```{r}
+F1_Score(test_set$y,boost.pred)
+```
+
+
+

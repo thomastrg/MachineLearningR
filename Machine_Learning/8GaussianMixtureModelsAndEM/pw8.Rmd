@@ -1,0 +1,250 @@
+---
+title: "Week 8"
+subtitle: "Gaussian Mixture Models & EM"
+author: "Trang Thomas"
+date: "`r format(Sys.time())`" # remove the # to show the date
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    theme: spacelab
+    highlight: zenburn
+    df_print: paged
+editor_options: 
+  chunk_output_type: console
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+
+EM using mclust --> GMM vs K means 
+==
+
+1)
+== 
+```{r}
+data1<-read.csv('data1.csv')
+data2<-read.csv('data2.csv')
+library(ggpubr)
+gg1<-ggplot(data1, aes(X1,X2,color=as.factor(truth)))+geom_point()+scale_color_manual(values=c("#000000", "#FF0000", "#009900","#000099"))+ggtitle('Data 1')
+gg2<-ggplot(data2, aes(X1,X2,color=as.factor(truth)), binwidth = 1)+geom_point()+scale_color_manual(values=c("#000000", "#FF0000", "#009900","#000099"))+ggtitle('Data 2')
+ggarrange(gg1,gg2)
+```
+
+
+2) 
+==
+```{r}
+par(mfrow=c(1,2))
+km_data1=kmeans(data1,centers=4)
+plot(data1$X1,data1$X2,col=km_data1$cluster,pch=19,cex=1.2,main='data1 K-means clusters')
+points(km_data1$centers,pch=4,cex=3,lwd=3,col=c("#000000", "#FF0000", "#009900","#000099"))
+
+km_data2=kmeans(data2,centers=4)
+plot(data2$X1,data2$X2,col=km_data2$cluster,pch=19,cex=1.2,main='data2 K-means clusters')
+points(km_data2$centers,pch=4,cex=3,lwd=3,col=c("#000000", "#FF0000", "#009900","#000099"))
+```
+  
+We can see that apply the k means on the data 1 give the good result as in question 1  
+But for data 2 the result given is not what we expected to have, because we have little differences on the definition of clusters 
+As it is said in the reminder, "One way to think about the  
+k-means model is that it places a circle (or, in higher dimensions, a hyper-sphere) at the center of each cluster, with a radius defined by the most distant point in the cluster" that explains why some clusters were not well classified 
+
+3) 
+==
+```{r}
+library(mclust)
+mod1<-Mclust(data1[,1:2])
+plot(mod1)
+mod2<-Mclust(data2[,1:2])
+plot(mod2)
+
+```
+  
+On the selection we have to choose between many options, we can type 1,2,3,4 
+
+
+4) 
+== 
+```{r}
+summary(mod2)
+```
+  
+we can see that the four labels are well distributed and we have a good prediction for each class as we have 100,99,101,100 distribution in each class 
+According to researches on the internet, the smaller the BIC is, the better the result is.
+
+
+
+5)
+==
+```{r}
+plot(mod1, what = "classification")
+plot(mod2, what = "uncertainty")
+
+
+```
+
+We can see two classification plots which are similar to the 2 scatter plots of the first question
+
+6)
+==
+```{r}
+plot(mod1, what = "BIC")
+```
+The plot shows the values of BIC according to the number of componenents, the highest value of BIC is for 4 components where all points are united and very close to each other.
+
+7)
+== 
+```{r}
+dens<-densityMclust(data2[,1:2])
+plot(dens,what='density', type='persp')
+plot(dens,what='density', type='image')
+
+```
+Density of X2 in function of X1
+
+
+
+EM on 1D
+== 
+8)
+==
+```{r}
+set.seed(1234)
+gaussian1<-rnorm(100,mean=-5,sd=2)
+part1 <- cbind(gaussian1, 1)
+gaussian2<-rnorm(100,mean=0,sd=2)
+part2 <- cbind(gaussian2, 2)
+gaussian3<-rnorm(100,mean=5,sd=2)
+part3 <- cbind(gaussian3, 3)
+
+df<-rbind(part1,part2,part3)
+df<-data.frame(df)
+names(df)[1]<-'X'
+names(df)[2]<-'source'
+head(df)
+```
+We have 3 groups of gaussian in our data frame  
+
+
+9)
+==
+```{r}
+#stripchart(df$X,col=df$source,pch=21,bg=1)
+
+vecY=rep(0,300)
+plot(x=df$X,y=vecY,col=df$source,pch=20,bg=2,xlab='X data',title('Stripchart of generated data'))
+
+```
+
+
+10)
+==
+```{r}
+hist(df$source,df$X,xlim=c(0,5),col='grey')
+
+
+```
+
+```{r}
+p <-hist(df$X,col='grey')
+
+```
+The highest frequency is around 0 because we know that means that were chosen for the 3 gaussians are -5,0,5 so that's logical that this repartition is around 0  
+
+11)
+==
+```{r}
+gaussian1Bis<-rnorm(100,mean=-100,sd=2)
+part1Bis <- cbind(gaussian1Bis, 1)
+gaussian2Bis<-rnorm(100,mean=0,sd=2)
+part2Bis <- cbind(gaussian2Bis, 2)
+gaussian3Bis<-rnorm(100,mean=100,sd=2)
+part3Bis <- cbind(gaussian3Bis, 3)
+
+dfBis<-rbind(part1Bis,part2Bis,part3Bis)
+dfBis<-data.frame(dfBis)
+names(dfBis)[1]<-'X'
+names(dfBis)[2]<-'source'
+head(dfBis)
+modGen<-Mclust(dfBis[,1])
+summary(modGen)
+plot(modGen, what = "classification")
+
+plot(modGen, what = "BIC")
+
+
+```
+We created another df because gaussians were not different enough so the model couldn't identify the clusters well. 
+We have all of our 3 clusters which are well identified which a 100% identity  
+For the BIC, We have the highest BIC with 3 components  
+
+
+
+12)
+==
+```{r}
+densBis<-densityMclust(dfBis[,1])
+plot(densBis,what='density', type='persp')
+plot(densBis,what='density', type='image')
+
+```
+
+
+
+EM from Scratch 
+==
+2.1)
+==
+```{r}
+gaussian1Bis<-rnorm(100,mean=-100,sd=2)
+part1Bis <- cbind(gaussian1Bis, 1)
+gaussian2Bis<-rnorm(100,mean=0,sd=2)
+part2Bis <- cbind(gaussian2Bis, 2)
+gaussian3Bis<-rnorm(100,mean=100,sd=2)
+part3Bis <- cbind(gaussian3Bis, 3)
+
+dfBis<-rbind(part1Bis,part2Bis,part3Bis)
+dfBis<-data.frame(dfBis)
+```
+The mixing coefficient seems to be the division of (number of point in the k-th cluster)/(total number of points)
+Let's do the same datframe as previously
+
+
+2.2)
+==
+```{r}
+mixingProportions=c(1/3,1/3,1/3)
+
+```
+MixingProportion is the part of point of a cluster 
+Identity matrices
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
